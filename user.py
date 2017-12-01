@@ -20,5 +20,15 @@ class User:
         This function deletes the passed object from the contact list
         '''
         User.list_of_users.remove(self)
+
+    @classmethod
+    def find_user_by_name(cls,name):
+        '''
+        A method that finds a user using the 
+        name of the user and return that user
+        '''
+        for user in cls.list_of_users:
+            if user.name == name:
+                return user
         
     

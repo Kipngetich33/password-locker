@@ -52,6 +52,20 @@ class TestUser(unittest.TestCase):
         test_user.save_user()# this line save the user test_user to the list_of_users
         self.new_user.delete_user()# this lines deletes the user
         self.assertEqual(len(User.list_of_users),1)
+
+    def test_find_user_by_name(self):
+        '''
+        test the function find_user_by_name from user.py
+         if it can find by a user with the name and return the user
+        '''
+        self.new_user.save_user()
+        test_user= User("test_user","test_user_password")
+        test_user.save_user()# this line save the user test_user to the list_of_users
+
+        found_by_name = User.find_user_by_name("test_user")
+        self.assertEqual(found_by_name.password,test_user.password)
+
+
         
 
 if __name__ == '__main__':
