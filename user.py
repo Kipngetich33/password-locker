@@ -14,5 +14,11 @@ class User:
         This function appends the object user to the list_of_users
         '''
         self.list_of_users.append(self)
+
+    def delete_user(self):
+        '''
+        This function deletes the passed object from the contact list
+        '''
+        User.list_of_users.remove(self)
         
     
