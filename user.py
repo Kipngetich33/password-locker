@@ -14,4 +14,5 @@ class User:
         This function appends the object user to the list_of_users
         '''
         self.list_of_users.append(self)
+        
     

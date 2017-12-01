@@ -14,6 +14,12 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user= User("Vincent","Empharse")
 
+    def tearDown(self):
+        '''
+        cleans up after each test case has run
+        '''
+        User.list_of_users=[]
+
     def test_init(self):
         '''
         this function tests an a user object is properly initialized
@@ -27,6 +33,16 @@ class TestUser(unittest.TestCase):
         a new user object to the contact list'''
         self.new_user.save_user()# this line calls the save user contact from user.py
         self.assertEqual(len(User.list_of_users),1)
+
+    def test_save_multiple_contacts(self):
+        '''
+        this function tests if the application can save multiple contats
+        '''
+        self.new_user.save_user()# this line calls the save user contact from user.py
+        test_user= User("test_user","test_user_password")
+        test_user.save_user()# this line save the user test_user to the list_of_users
+        self.assertEqual(len(User.list_of_users),2)
+        
 
 if __name__ == '__main__':
     unittest.main()
