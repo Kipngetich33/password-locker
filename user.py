@@ -1,3 +1,4 @@
+import pyperclip
 class User:
     """ This is a class that helps in generating instances of a user
     """
@@ -47,4 +48,12 @@ class User:
         '''
         return cls.list_of_users
         
+    @classmethod
+    def copy_found_password(cls,name):
+        '''
+        A method that utilises the find_user_by_name method 
+        then copies the password of that object using pyperclip
+        '''
+        user_found= cls.find_user_by_name(name)
+        pyperclip.copy(user_found.password)
     

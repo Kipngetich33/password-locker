@@ -1,3 +1,4 @@
+import pyperclip
 import unittest # this line imports the unittest module
 from user import User # this lines imports the class User from user.py
 
@@ -83,6 +84,18 @@ class TestUser(unittest.TestCase):
         display_all_users can accurately display all users
         '''
         self.assertEqual(User.display_all_users(),User.list_of_users)
+
+    def test_copy_found_password(self):
+        '''
+        tests whether the copy_name_found_user can can find and copy the
+        password of a found user
+        '''
+        self.new_user.save_user()
+        User.copy_found_password("Vincent")
+        self.assertEqual(self.new_user.password,pyperclip.paste())
+
+        
+
 
         
 
