@@ -77,6 +77,13 @@ class TestUser(unittest.TestCase):
         user_exist= User.user_exists("test_user")
         self.assertTrue(user_exist)
 
+    def test_display_all_users(self):
+        '''
+        test that determines whether the function 
+        display_all_users can accurately display all users
+        '''
+        self.assertEqual(User.display_all_users(),User.list_of_users)
+
         
 
 

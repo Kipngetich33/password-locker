@@ -7,7 +7,7 @@ class User:
         self.name= name
         self.password= password
 
-    list_of_users=[] #this is an empty array that will store the users
+    list_of_users=[] #this is an empty list that will store the users
 
     def save_user(self):
         '''
@@ -40,5 +40,11 @@ class User:
             if user.name == name:
                 return True
         return False
+    @classmethod
+    def display_all_users(cls):
+        '''
+        A method that returns a list of all users
+        '''
+        return cls.list_of_users
         
     
