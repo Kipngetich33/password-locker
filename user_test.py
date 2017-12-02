@@ -65,6 +65,20 @@ class TestUser(unittest.TestCase):
         found_by_name = User.find_user_by_name("test_user")
         self.assertEqual(found_by_name.password,test_user.password)
 
+    def test_user_exists(self):
+        '''
+        test whether a user actually exists by calling a method 
+        user_exist in user.py
+        '''
+        self.new_user.save_user()
+        test_user= User("test_user","test_user_password")
+        test_user.save_user()# this line save the user test_user to the list_of_users
+
+        user_exist= User.user_exists("test_user")
+        self.assertTrue(user_exist)
+
+        
+
 
         
 

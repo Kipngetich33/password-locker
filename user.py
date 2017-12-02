@@ -14,7 +14,6 @@ class User:
         This function appends the object user to the list_of_users
         '''
         self.list_of_users.append(self)
-
     def delete_user(self):
         '''
         This function deletes the passed object from the contact list
@@ -30,5 +29,16 @@ class User:
         for user in cls.list_of_users:
             if user.name == name:
                 return user
+
+    @classmethod
+    def user_exists(cls,name):
+        '''
+        A method that determines if a user exists using the 
+        name of the user and returns an boolean
+        '''
+        for user in cls.list_of_users:
+            if user.name == name:
+                return True
+        return False
         
     
