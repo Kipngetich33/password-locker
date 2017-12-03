@@ -71,12 +71,75 @@ def delete_credential_run(credential):
 def main():
     while True:
         # This is the main menu/ while loop
-        print("please use the shortcodes lg-login, ca- create a new account")
+        print("please use the shortcodes lg-login, ca- create a new account ex- exit")
         short_code0= input()
         if short_code0 == 'lg':
-            print("ok")
+                print("Enter User Name")
+                login_user_name= input()
+                print("Enter Password")
+                login_password = input()
+
+                if check_if_user_exists(login_user_name):
+                    print("loop")
+                    logged_in_user = find_users(login_user_name)
+
+                    if logged_in_user.password == login_password:
+
+                        print(f"{logged_in_user.name} .....{logged_in_user.password}")
+                        print ('-'*10)
+                        while True:
+                            print("Enter ca- to add another credential , ex -exit")
+                            shortcode3 = input()
+
+                            if shortcode3 == 'ca':
+                                credential_user_name = logged_in_user.name
+                                print(f"welcome {credential_user_name} add a credential") 
+                                print("Enter credential name")
+                                name_of_credential =input()
+                                print("Enter password for the credential")
+                                password_of_credential = input()
+
+                                save_credential_run(create_credential(credential_user_name,name_of_credential,password_of_credential))
+                                print("passed this ")
+                                print(f"credentials Credentials.find_credentials_by_name(credential_user_name)")
+                                print("\n")
+                                # for credential in :
+                                    # if 
+                                    # print(credential_name, credential_password)
+
+                            elif shortcode3 == 'ex':
+                                print("exiting credentials")
+                                break                            
+                            
+                            print ('-'*10)
+                            print("\n")
+
+
+                        print("Enter name")
+                else:
+                    print("\n")
+                    print("Wrong user name and password combination")
+
+
         elif short_code0 == 'ca':
-             print("ok")
+            print ("New User")
+            print('-'*10)
+
+            print ("Enter Your Name")
+            user_name_run2= input()
+            print ("Enter a password")
+            user_password_run2 =input()
+
+            save_users(create_users(user_name_run2, user_password_run2))
+            print("\n")
+            print (f"New user created {user_name_run2} {user_password_run2} ")
+
+            #This part invokes the credentials class
+            print("\n")
+            print("You can now login to add a new credential")
+             
+
+
         elif short_code0 == 'ex':
             print ("Exiting Application")
             break

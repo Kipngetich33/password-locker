@@ -94,6 +94,8 @@ class TestUser(unittest.TestCase):
         User.copy_found_password("Vincent")
         self.assertEqual(self.new_user.password,pyperclip.paste())
 
+
+
         
 
 

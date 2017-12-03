@@ -59,6 +59,43 @@ class TestCredentials( unittest.TestCase ):
         self.new_credential.delete_credentials()
         self.assertEqual(len(Credentials.list_of_credentials),1)
 
+    def test_find_credential_by_name(self):
+        '''
+        Function that tests whether a credential can be searched with a
+        name and credial returned
+        '''
+        self.new_credential.save_credentials()
+        test_credential = Credentials("Felix","twitter","Felback24")
+        test_credential.save_credentials()
+
+        found_credential = Credentials.find_credentials_by_name("Felix")
+        self.assertEqual(found_credential.credential_name,test_credential.credential_name)
+
+    def test_credential_exists(self):
+        '''
+        Function that determine whether a credential exists
+        '''
+        self.new_credential.save_credentials()
+        test_credential = Credentials("Felix","twitter","Felback24")
+        test_credential.save_credentials()
+
+        credential_exist = Credentials.credential_exists("Felix")
+        self.assertTrue(credential_exist)
+
+        
+        
+
+    # def test_display_credentials(self):
+    #     '''
+    #     Function that tests if the application can display all credentials
+    #     '''
+    #     self.new_credential.save_credentials()
+    #     test_credential = Credentials("Felix","twitter","Felback24")
+    #     test_credential.save_credentials()
+    #     self.assertEqual(len(Credentials.list_of_credentials),2)
+
+
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -22,6 +22,19 @@ class Credentials:
         '''
         Credentials.list_of_credentials.remove(self)
 
+    @classmethod
+    def find_credentials_by_name(cls,name):
+        for credential in cls.list_of_credentials:
+            if credential.user_name == name:
+                return credential
+
+    @classmethod
+    def credential_exists(cls,name):
+        for credential in cls.list_of_credentials:
+            if credential.user_name == name:
+                return True
+
+
 
         
     
