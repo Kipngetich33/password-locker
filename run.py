@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.6
 
 from user import User
+from credetials import Credentials
 
 def create_users(name,password):
     '''
@@ -36,7 +37,7 @@ def check_if_user_exists(name):
     '''
     return User.user_exists(name)
 
-def dislaying_all_users():
+def displaying_all_users():
     '''
     Function displays all the saved users
     '''
@@ -48,7 +49,7 @@ def main():
     print("\n")
     print(f"What would you like to do {user_name_run}")
     while True:
-        print ("Use these short code: cu -create user ,du -displays users ,fc -find a user ,ex -exit")
+        print ("Use these short code: cu -create user ,du -displays users ,fu -find a user ,ex -exit")
         short_code =input()
 
         if short_code == 'cu':
@@ -69,8 +70,8 @@ def main():
                 print("Here is a list of all users")
                 print("\n")
 
-                for user in displaying_all_users:
-                    print(f"user.name....{user.password}")
+                for user in displaying_all_users():
+                    print(f"{user.name}....{user.password}")
                     print ("\n")
             else:
                 print("\n")
@@ -78,19 +79,19 @@ def main():
                 print("\n")
 
         elif short_code == 'fu':
-            print("enter the name of the user you want to search for")
+            print("enter the name of the used you want to search for")
             search_name =input()
 
-            if check_if_user_exists():
+            if check_if_user_exists(search_name):
                 search_user = find_users(search_name)
-                print(f"{search_name.name}")
+                print(f"{search_user.name}")
                 print ('-'*10)
-                print (f"{search_name.password")
+                print (f"{search_user.password}")
 
             else:
                 print ("User under the given name does not exist")
 
-        elif short_code = 'ex':
+        elif short_code == 'ex':
             print ('Existing Application')
             break
         else:
