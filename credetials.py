@@ -6,7 +6,7 @@ class Credentials:
     def __init__ (self,user_name, credential_name , credential__password):
         self.user_name = user_name
         self.credential_name =credential_name
-        self.credential__password =credential__password
+        self.credential_password =credential__password
 
     list_of_credentials=[]  #this is an empty list that will hold all the information for each user
 
