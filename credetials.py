@@ -8,9 +8,15 @@ class Credentials:
         self.credential_name =credential_name
         self.credential_password =credential__password
 
-    list_of_credentials=[]  #this is an empty list that will hold all the information for each user
+    list_of_credentials = []  #this is an empty list that will hold all the information for each user
 
-    # def create_credentials(u_name,c_name,c_password):
+    def save_credentials(self):
+        '''
+        This functions appends each new credential to the list of credetials
+        '''
+        self.list_of_credentials.append(self)
+        
+
 
         
     

@@ -23,5 +23,14 @@ class TestCredentials( unittest.TestCase ):
         self.assertEqual(self.new_credential.credential_name,"facebook")
         self.assertEqual(self.new_credential.credential_password,"poheri333")
 
+    def test_save_credentials(self):
+        '''
+        A method that determines whether the save function adds
+        credentials to the list of credentials
+        '''
+        self.new_credential.save_credentials()
+        self.assertEqual(len(Credentials.list_of_credentials),1)
+        
+
 if __name__ == '__main__':
     unittest.main()
