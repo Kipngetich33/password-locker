@@ -9,15 +9,22 @@ def create_user(name,password):
     new_run_user= User(name,password)
     return new_run_user
 
-def save_users(contact):
+def save_users(user):
     '''
     Function that saves the created user to the list of users
     '''
-    contact.save_user()
+    user.save_user()
 
-# def delete_users(contact):
-#     '''
-#     Function that deletes a user
-#     '''
-#     contact.delete_user()
+def delete_users(user):
+    '''
+    Function that deletes a user
+    '''
+    user.delete_user()
 
+def find_contacts(name):
+    '''
+    Functiont that searches for a user using the name of the user and returns the user
+    '''
+   return  User.find_user_by_name(name)
+
+def check_if_user_exists(name):
