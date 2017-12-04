@@ -1,4 +1,6 @@
 import pyperclip
+import random
+
 class User:
     """ This is a class that helps in generating instances of a user
     """
@@ -20,6 +22,12 @@ class User:
         This function deletes the passed object from the contact list
         '''
         User.list_of_users.remove(self)
+
+    # def password_generator():
+    #     '''
+    #     This function creates a password for the user
+    #     '''
+    #     return password = random.randint(10000,100000)
 
     @classmethod
     def find_user_by_name(cls,name):

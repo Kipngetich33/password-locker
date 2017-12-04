@@ -94,6 +94,14 @@ class TestUser(unittest.TestCase):
         User.copy_found_password("Vincent")
         self.assertEqual(self.new_user.password,pyperclip.paste())
 
+    # def test_password_generator(self):
+    #     '''
+    #     test whether the app can create a password for the user
+    #     '''
+    #     self.new_user.save_user()
+    #     test_user= User("test_user",User.password_generator())
+    #     test_user.save_user()# this line save the user test_user to the list_of_users
+
 
 
         

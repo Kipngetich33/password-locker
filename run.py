@@ -2,6 +2,7 @@
 
 from user import User
 from credetials import Credentials
+import random 
 
 # This part applies to class User
 
@@ -94,20 +95,48 @@ def main():
                             credential_user_name = logged_in_user.name
 
                             if shortcode3 == 'cc':
-                                
-                                print(f"welcome {credential_user_name} add a credential") 
-                                print("Enter credential name")
-                                name_of_credential =input()
-                                print("Enter password for the credential")
-                                password_of_credential = input()
 
-                                save_credential_run(create_credential(credential_user_name,name_of_credential,password_of_credential))
-                                
-                                print("You Credentials")
-                                print ('-'*10)
-                                for credential in Credentials.display_all_credentials():
-                                    if credential_user_name == credential.user_name:
-                                        print(f"{credential.credential_name}......{credential.credential_password}")
+                                while True:
+                                    print("use these short codes 1- enter you own password 2 -for system generated password \'ok' -continue , ex- exit ")
+                                    short_code5 = input()
+
+                                    if short_code5 == '1':
+                                        print(f"welcome {credential_user_name} add a credential") 
+                                        print("Enter credential name")
+                                        name_of_credential =input()
+                                        print("Enter password for the credential")
+                                        password_of_credential = input()
+
+                                        save_credential_run(create_credential(credential_user_name,name_of_credential,password_of_credential))
+                                        
+                                        print("You Credentials")
+                                        print ('-'*10)
+                                        for credential in Credentials.display_all_credentials():
+                                            if credential_user_name == credential.user_name:
+                                                print(f"Credential:{credential.credential_name}......Password:{credential.credential_password}")
+                                    
+
+                                    elif short_code5 == '2':
+                                        print(f"welcome {credential_user_name} add a credential") 
+                                        print("Enter credential name")
+                                        name_of_credential =input()
+                                        print("You Password has been generated")
+                                        password_of_credential = random.randint(10000,99000)
+
+                                        save_credential_run(create_credential(credential_user_name,name_of_credential,password_of_credential))
+                                        
+                                        print("You Credentials")
+                                        print ('-'*10)
+                                        for credential in Credentials.display_all_credentials():
+                                            if credential_user_name == credential.user_name:
+                                                print(f"Credential:{credential.credential_name}......Password:{credential.credential_password}")
+
+                                    elif short_code5 == 'ok' or 'ex':
+                                        break
+
+                                    else:
+                                         print("Invalid Input, please use the provided shortcodes")
+
 
                             elif shortcode3 == 'dc':
                                 print("You Credentials")
@@ -151,21 +180,52 @@ def main():
             print ("New User")
             print('-'*10)
 
-            print ("Enter Your Name")
-            user_name_run2= input()
-            print ("Enter a password")
-            user_password_run2 =input()
+            while True:
+                print("use these short codes 1- enter you own password 2 -for system generated password \'ok' -continue , ex- exit ")
+                short_code4 = input()
 
-            save_users(create_users(user_name_run2, user_password_run2))
-            print("\n")
-            print (f"New user created") 
-            print('-'*10)
-            print(f" {user_name_run2} {user_password_run2} ")
+                if short_code4 == '1':
+                    print ("Enter Your Name")
+                    user_name_run2= input()
+                    print ("Enter a password")
+                    user_password_run2 =input()
 
-            #This part invokes the credentials class
-            print ('-'*10)
-            print("You can now login to add a new credential")
-            print ('-'*10)
+                    save_users(create_users(user_name_run2, user_password_run2))
+                    print("\n")
+                    print (f"New user created") 
+                    print('-'*10)
+                    print("user ...............password")
+                    print(f" name:{user_name_run2}.... Password:{user_password_run2} ")
+
+                    #This part invokes the credentials class
+                    print ('-'*10)
+                    print("You can now login to add a new credential")
+                    print("enter \'ok'\' to continue")
+                    print ('-'*10)
+                elif short_code4 == '2':
+                    print ("Enter Your Name")
+                    user_name_run2= input()
+                    print ("Your password has has been generated")
+                    user_password_run2 = random.randint(10000,99000)
+
+                    save_users(create_users(user_name_run2, user_password_run2))
+                    print("\n")
+                    print (f"New user created") 
+                    print('-'*10)
+                    print("user ...............password")
+                    print(f" name:{user_name_run2}.... Password:{user_password_run2} ")
+
+                    #This part invokes the credentials class
+                    print ('-'*10)
+                    print("You can now login to add a new credential")
+                    print("enter \'ok'\' to continue")
+                    print ('-'*10)
+                
+                elif short_code4 == 'ex' or 'ok':
+                    break
+                else:
+                    print("Invalid input please use the short codes")
+
 
         elif short_code0 == 'ex':
             print ("Exiting Application")
@@ -215,86 +275,6 @@ def main():
 
         else:
             print("Invalid input, please use the provided shortcodes")
-
-    # print("Welcome to Password Locker. What is you name?")
-    # user_name_run =input()
-    # print("\n")
-    # print(f"What would you like to do {user_name_run}")
-    # while True:
-    #     print ("Use these short code: cu -create user ,du -displays users ,fu -find a user ,ex -exit")
-    #     short_code =input()
-
-    #     if short_code == 'cu':
-    #         print ("New User")
-    #         print('-'*10)
-
-    #         print ("Enter Your Name")
-    #         user_name_run2= input()
-    #         print ("Enter a password")
-    #         user_password_run2 =input()
-
-    #         save_users(create_users(user_name_run2, user_password_run2))
-    #         print("\n")
-    #         print (f"New user created {user_name_run2} {user_password_run2} ")
-
-    #         # This part invokes the credentials class
-    #         print("\n")
-    #         print("You can now add a new credential")
-
-    #         while True:
-    #             print("ss-create and save , dc-display credentials, ex -exit")
-    #             short_code2 =input()
-
-    #             if short_code2 == 'ss':
-    #                 print("Enter username")
-    #                 credential_user_name = input()
-    #                 print("Enter name of credential")
-    #                 credential_name = input ()
-    #                 print("Enter password of credential")
-    #                 credential_password = input()
-
-    #                 save_credential_run(create_credential(credential_user_name, credential_name,credential_password))
-    #                 print("A new creditial has been created")
-    #             # elif short_code2 == 'dl':
-    #             #     print("ok")
-    #             #     break
-
-    #             # elif short_code2 == 'dc':
-
-
-
-
-    #     elif short_code == 'du':
-    #         if displaying_all_users():
-    #             print("Here is a list of all users")
-    #             print("\n")
-
-    #             for user in displaying_all_users():
-    #                 print(f"{user.name}....{user.password}")
-    #                 print ("\n")
-    #         else:
-    #             print("\n")
-    #             print("You have not created any users yet")
-    #             print("\n")
-
-    #     elif short_code == 'fu':
-    #         print("enter the name of the used you want to search for")
-    #         search_name =input()
-
-    #         if check_if_user_exists(search_name):
-    #             search_user = find_users(search_name)
-    #             print(f"{search_user.name}")
-    #             print ('-'*10)
-    #             print (f"{search_user.password}")
-
-    #         else:
-    #             print ("User under the given name does not exist")
-
-    #     elif short_code == 'ex':
-    #         print ('Existing Application')
-    #         break
-    #     else:
-    #         print("Invalid input please try again using the given shortcodes")
 
 if __name__ == '__main__':
 
