@@ -198,6 +198,21 @@ def main():
                 print('-'*10)
                 print ("User under the given name does not exist")
 
+        elif short_code0 == 'dl':
+            print("enter the name of the used you want to Delete")
+            delete_name =input()
+
+            if check_if_user_exists(delete_name):
+                delete_users(find_users(delete_name))
+                print ('-'*10)
+                print(f"user {delete_name} deleted")
+                
+            else:
+                print('-'*10)
+                print ("User under the given name does not exist")
+                print("\n")
+
+
         else:
             print("Invalid input, please use the provided shortcodes")
 
