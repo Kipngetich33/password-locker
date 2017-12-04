@@ -103,31 +103,27 @@ def main():
 
                                 save_credential_run(create_credential(credential_user_name,name_of_credential,password_of_credential))
                                 
-
+                                print("You Credentials")
+                                print ('-'*10)
                                 for credential in Credentials.display_all_credentials():
                                     if credential_user_name == credential.user_name:
-                                        print("You Credentials")
-                                        print("\n")
-                                        print(f"{credential.user_name}......{credential.credential_password}")
+                                        print(f"{credential.credential_name}......{credential.credential_password}")
 
                             elif shortcode3 == 'dc':
+                                print("You Credentials")
+                                print ('-'*10)
                                 for credential in Credentials.display_all_credentials():
                                     if credential_user_name == credential.user_name:
-                                        print("You Credentials")
-                                        print("\n")
-                                        print(f"{credential.user_name}......{credential.credential_password}")
+                                        print(f"{credential.credential_name}......{credential.credential_password}")
 
                             elif shortcode3 == 'ex':
                                 print("exiting credentials")
-                                                            
                             
-                            print ('-'*10)
-                            print("\n")
 
                 else:
                    print ('-'*10)
-                    print("Wrong user name and password combination")
-                    print ('-'*10)
+                   print("Wrong user name and password combination")
+                   print ('-'*10)
 
 
         elif short_code0 == 'ca':
