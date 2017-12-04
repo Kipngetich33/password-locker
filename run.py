@@ -71,7 +71,7 @@ def delete_credential_run(credential):
 def main():
     while True:
         # This is the main menu/ while loop
-        print("Please use these shortcodes: lg-login, ca- create a user, ex- exit")
+        print("Please use these shortcodes: lg-login, ca- create a user, fu -find user, du- display users  ex- exit")
         short_code0= input()
         if short_code0 == 'lg':
                 print("Enter User Name")
@@ -166,12 +166,11 @@ def main():
             print ('-'*10)
             print("You can now login to add a new credential")
             print ('-'*10)
-             
-
 
         elif short_code0 == 'ex':
             print ("Exiting Application")
             break
+
         elif short_code0 == 'du':
             if displaying_all_users():
                 print("Here is a list of all users")
@@ -184,6 +183,21 @@ def main():
                 print("\n")
                 print("You have not created any users yet")
                 print("\n")
+
+        elif short_code0 == 'fu':
+            print("enter the name of the used you want to search for")
+            search_name =input()
+
+            if check_if_user_exists(search_name):
+                search_user = find_users(search_name)
+                print ('-'*10)
+                print(f"{search_user.name}....{search_user.password}")
+                
+
+            else:
+                print('-'*10)
+                print ("User under the given name does not exist")
+
         else:
             print("Invalid input, please use the provided shortcodes")
 
