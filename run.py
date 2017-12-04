@@ -88,6 +88,7 @@ def main():
 
                         print(f"{logged_in_user.name} ...........{logged_in_user.password}")
                         print ('-'*10)
+
                         while True:
                             print("Enter cc- to add a credential ,dc- display credentials, dl -delete credential ex -exit")
                             shortcode3 = input()
@@ -131,9 +132,11 @@ def main():
                                             if credential_user_name == credential.user_name:
                                                 print(f"Credential:{credential.credential_name}......Password:{credential.credential_password}")
 
-                                    elif short_code5 == 'ok' or 'ex':
+                                    elif short_code5 == 'ok':
                                         break
 
+                                    elif short_code5 == 'ex':
+                                        break
                                     else:
                                          print("Invalid Input, please use the provided shortcodes")
 
@@ -202,6 +205,7 @@ def main():
                     print("You can now login to add a new credential")
                     print("enter \'ok'\' to continue")
                     print ('-'*10)
+
                 elif short_code4 == '2':
                     print ("Enter Your Name")
                     user_name_run2= input()
@@ -221,8 +225,12 @@ def main():
                     print("enter \'ok'\' to continue")
                     print ('-'*10)
                 
-                elif short_code4 == 'ex' or 'ok':
+                elif short_code4 == 'ex':
                     break
+
+                elif short_code4 == 'ok':
+                    break
+
                 else:
                     print("Invalid input please use the short codes")
 
