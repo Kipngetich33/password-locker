@@ -71,7 +71,7 @@ def delete_credential_run(credential):
 def main():
     while True:
         # This is the main menu/ while loop
-        print("Please use these shortcodes: lg-login, ca- create a new account ex- exit")
+        print("Please use these shortcodes: lg-login, ca- create a new account, ex- exit")
         short_code0= input()
         if short_code0 == 'lg':
                 print("Enter User Name")
@@ -85,15 +85,15 @@ def main():
 
                     if logged_in_user.password == login_password:
 
-                        print(f"{logged_in_user.name} .....{logged_in_user.password}")
+                        print(f"{logged_in_user.name} ...........{logged_in_user.password}")
                         print ('-'*10)
                         while True:
-                            print("Enter ca- to add another credential ,dc- display credentials ex -exit")
+                            print("Enter cc- to add a credential ,dc- display credentials, dl -delete credential ex -exit")
                             shortcode3 = input()
 
                             credential_user_name = logged_in_user.name
 
-                            if shortcode3 == 'ca':
+                            if shortcode3 == 'cc':
                                 
                                 print(f"welcome {credential_user_name} add a credential") 
                                 print("Enter credential name")
@@ -116,10 +116,31 @@ def main():
                                     if credential_user_name == credential.user_name:
                                         print(f"{credential.credential_name}......{credential.credential_password}")
 
+                            elif shortcode3 == 'dl':
+                                if Credentials.credential_exists(credential_user_name):
+                                    print("Enter Name of Credential to delete")
+                                    credential_for_delete = input()
+
+                                    for credential in Credentials.display_all_credentials():
+                                        if credential.credential_name == credential_for_delete:
+                                            credential.delete_credentials()
+                                            print(f"Deleted {credential_for_delete}")
+                                            print("\n")
+
+                                        else:
+                                            print ('-'*10)
+                                            print("The credential does not exist")
+        
+                                else:
+                                    print("You have not added any credentials yet")        
+
                             elif shortcode3 == 'ex':
                                 print("exiting credentials")
+                                break
                             
-
+                            else:
+                                print("Invalid Choice please use the short codes")
+                            
                 else:
                    print ('-'*10)
                    print("Wrong user name and password combination")

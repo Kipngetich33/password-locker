@@ -81,9 +81,7 @@ class TestCredentials( unittest.TestCase ):
 
         credential_exist = Credentials.credential_exists("Felix")
         self.assertTrue(credential_exist)
-
-        
-        
+       
 
     def test_display_credentials(self):
         '''
