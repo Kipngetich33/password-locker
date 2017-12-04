@@ -71,7 +71,7 @@ def delete_credential_run(credential):
 def main():
     while True:
         # This is the main menu/ while loop
-        print("please use the shortcodes lg-login, ca- create a new account ex- exit")
+        print("Please use these shortcodes: lg-login, ca- create a new account ex- exit")
         short_code0= input()
         if short_code0 == 'lg':
                 print("Enter User Name")
@@ -80,7 +80,7 @@ def main():
                 login_password = input()
 
                 if check_if_user_exists(login_user_name):
-                    print("loop")
+                    print(f"Welcome {login_user_name}")
                     logged_in_user = find_users(login_user_name)
 
                     if logged_in_user.password == login_password:
@@ -88,11 +88,13 @@ def main():
                         print(f"{logged_in_user.name} .....{logged_in_user.password}")
                         print ('-'*10)
                         while True:
-                            print("Enter ca- to add another credential , ex -exit")
+                            print("Enter ca- to add another credential ,dc- display credentials ex -exit")
                             shortcode3 = input()
 
+                            credential_user_name = logged_in_user.name
+
                             if shortcode3 == 'ca':
-                                credential_user_name = logged_in_user.name
+                                
                                 print(f"welcome {credential_user_name} add a credential") 
                                 print("Enter credential name")
                                 name_of_credential =input()
@@ -100,25 +102,32 @@ def main():
                                 password_of_credential = input()
 
                                 save_credential_run(create_credential(credential_user_name,name_of_credential,password_of_credential))
-                                print("passed this ")
-                                print(f"credentials Credentials.find_credentials_by_name(credential_user_name)")
-                                print("\n")
-                                # for credential in :
-                                    # if 
-                                    # print(credential_name, credential_password)
+                                
+
+                                for credential in Credentials.display_all_credentials():
+                                    if credential_user_name == credential.user_name:
+                                        print("You Credentials")
+                                        print("\n")
+                                        print(f"{credential.user_name}......{credential.credential_password}")
+
+                            elif shortcode3 == 'dc':
+                                for credential in Credentials.display_all_credentials():
+                                    if credential_user_name == credential.user_name:
+                                        print("You Credentials")
+                                        print("\n")
+                                        print(f"{credential.user_name}......{credential.credential_password}")
 
                             elif shortcode3 == 'ex':
                                 print("exiting credentials")
-                                break                            
+                                                            
                             
                             print ('-'*10)
                             print("\n")
 
-
-                        print("Enter name")
                 else:
-                    print("\n")
+                   print ('-'*10)
                     print("Wrong user name and password combination")
+                    print ('-'*10)
 
 
         elif short_code0 == 'ca':
@@ -132,11 +141,14 @@ def main():
 
             save_users(create_users(user_name_run2, user_password_run2))
             print("\n")
-            print (f"New user created {user_name_run2} {user_password_run2} ")
+            print (f"New user created") 
+            print('-'*10)
+            print(f" {user_name_run2} {user_password_run2} ")
 
             #This part invokes the credentials class
-            print("\n")
+            print ('-'*10)
             print("You can now login to add a new credential")
+            print ('-'*10)
              
 
 

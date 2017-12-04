@@ -85,14 +85,11 @@ class TestCredentials( unittest.TestCase ):
         
         
 
-    # def test_display_credentials(self):
-    #     '''
-    #     Function that tests if the application can display all credentials
-    #     '''
-    #     self.new_credential.save_credentials()
-    #     test_credential = Credentials("Felix","twitter","Felback24")
-    #     test_credential.save_credentials()
-    #     self.assertEqual(len(Credentials.list_of_credentials),2)
+    def test_display_credentials(self):
+        '''
+        Function that tests if the application can display all credentials
+        '''
+        self.assertEqual(Credentials.display_all_credentials(), Credentials.list_of_credentials)
 
 
 
