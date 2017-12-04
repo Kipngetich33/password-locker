@@ -71,7 +71,7 @@ def delete_credential_run(credential):
 def main():
     while True:
         # This is the main menu/ while loop
-        print("Please use these shortcodes: lg-login, ca- create a new account, ex- exit")
+        print("Please use these shortcodes: lg-login, ca- create a user, ex- exit")
         short_code0= input()
         if short_code0 == 'lg':
                 print("Enter User Name")
@@ -137,7 +137,7 @@ def main():
                             elif shortcode3 == 'ex':
                                 print("exiting credentials")
                                 break
-                            
+
                             else:
                                 print("Invalid Choice please use the short codes")
                             
@@ -172,6 +172,18 @@ def main():
         elif short_code0 == 'ex':
             print ("Exiting Application")
             break
+        elif short_code0 == 'du':
+            if displaying_all_users():
+                print("Here is a list of all users")
+                print("\n")
+
+                for user in displaying_all_users():
+                    print(f"{user.name}....{user.password}")
+                    print ("\n")
+            else:
+                print("\n")
+                print("You have not created any users yet")
+                print("\n")
         else:
             print("Invalid input, please use the provided shortcodes")
 
