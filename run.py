@@ -72,7 +72,7 @@ def delete_credential_run(credential):
 def main():
     while True:
         # This is the main menu/ while loop
-        print("Please use these shortcodes: lg-login, ca- create a user, fu -find user, du- display users  ex- exit")
+        print("Please use these shortcodes: lg-login,cu -create user, fu -find user, du- display users  ex- exit")
         short_code0= input()
         if short_code0 == 'lg':
                 print("Enter User Name")
@@ -98,7 +98,7 @@ def main():
                             if shortcode3 == 'cc':
 
                                 while True:
-                                    print("use these short codes 1- enter you own password 2 -for system generated password \'ok' -continue , ex- exit ")
+                                    print("use these short codes 1- enter you own password 2 -for system generated password ,'ok' -credentials menu")
                                     short_code5 = input()
 
                                     if short_code5 == '1':
@@ -179,61 +179,26 @@ def main():
                    print ('-'*10)
 
 
-        elif short_code0 == 'ca':
-            print ("New User")
+        elif short_code0 == 'cu':
+            print ("Creating a New User")
             print('-'*10)
 
-            while True:
-                print("use these short codes 1- enter you own password 2 -for system generated password \'ok' -continue , ex- exit ")
-                short_code4 = input()
+            print ("Enter Your Name")
+            user_name_run2 = input()
+            print ("Enter a password")
+            user_password_run2 =input()
 
-                if short_code4 == '1':
-                    print ("Enter Your Name")
-                    user_name_run2= input()
-                    print ("Enter a password")
-                    user_password_run2 =input()
+            save_users(create_users(user_name_run2, user_password_run2))
+            print("\n")
+            print (f"New user created") 
+            print('-'*10)
+            print("user ...............password")
+            print(f" name:{user_name_run2}.... Password:{user_password_run2} ")
 
-                    save_users(create_users(user_name_run2, user_password_run2))
-                    print("\n")
-                    print (f"New user created") 
-                    print('-'*10)
-                    print("user ...............password")
-                    print(f" name:{user_name_run2}.... Password:{user_password_run2} ")
-
-                    #This part invokes the credentials class
-                    print ('-'*10)
-                    print("You can now login to add a new credential")
-                    print("enter \'ok'\' to continue")
-                    print ('-'*10)
-
-                elif short_code4 == '2':
-                    print ("Enter Your Name")
-                    user_name_run2= input()
-                    print ("Your password has has been generated")
-                    user_password_run2 = random.randint(10000,99000)
-
-                    save_users(create_users(user_name_run2, user_password_run2))
-                    print("\n")
-                    print (f"New user created") 
-                    print('-'*10)
-                    print("user ...............password")
-                    print(f" name:{user_name_run2}.... Password:{user_password_run2} ")
-
-                    #This part invokes the credentials class
-                    print ('-'*10)
-                    print("You can now login to add a new credential")
-                    print("enter \'ok'\' to continue")
-                    print ('-'*10)
-                
-                elif short_code4 == 'ex':
-                    break
-
-                elif short_code4 == 'ok':
-                    break
-
-                else:
-                    print("Invalid input please use the short codes")
-
+            #This part invokes the credentials class
+            print ('-'*10)
+            print("You can now login to add a new credential")
+            print ('-'*10)
 
         elif short_code0 == 'ex':
             print ("Exiting Application")
@@ -253,7 +218,7 @@ def main():
                 print("\n")
 
         elif short_code0 == 'fu':
-            print("enter the name of the used you want to search for")
+            print("enter the name of the user you want to search for")
             search_name =input()
 
             if check_if_user_exists(search_name):
