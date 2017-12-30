@@ -72,16 +72,21 @@ def delete_credential_run(credential):
 def main():
     while True:
         # This is the main menu/ while loop
-        print("Please use these shortcodes: lg-login,cu -create user, fu -find user, du- display users  ex- exit")
+        print("PLEASE USE THE FOLLOWING SHORT CODES:)
+        print("lg : to LOGIN") 
+        print("cu : to CREATE NEW USER")
+        print("fu : to FIND A USER")
+        print("DU : to DISPLAY A USER")
+        print("ex : to EXIT")
         short_code0= input()
         if short_code0 == 'lg':
-                print("Enter User Name")
+                print("ENTER USER NAME")
                 login_user_name= input()
-                print("Enter Password")
+                print("ENTER PASSWORD")
                 login_password = input()
 
                 if check_if_user_exists(login_user_name):
-                    print(f"Welcome {login_user_name}")
+                    print(f"WELCOME {login_user_name}")
                     logged_in_user = find_users(login_user_name)
 
                     if logged_in_user.password == login_password:
