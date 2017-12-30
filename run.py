@@ -208,6 +208,7 @@ def main():
                    print ('-'*10)
 
 
+<<<<<<< HEAD
         elif short_code0 == 'cu':
             print ("CREATING A NEW USER")
             print('-'*10)

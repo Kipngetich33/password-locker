@@ -1,4 +1,4 @@
-# MealTracker
+# PASSWORD LOCKER APP
 
 # AUTHOR
 
