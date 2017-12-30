@@ -66,17 +66,19 @@ def delete_credential_run(credential):
     '''
     Function that deletes a credential from the list of credentials
     '''
-    credential.delete_credentials()
+    credential.delete_credentials() 
 
 
 def main():
     while True:
         # This is the main menu/ while loop
-        print("PLEASE USE THE FOLLOWING SHORT CODES:)
+        print ('-'*10)
+        print("PLEASE USE THE FOLLOWING SHORT CODES:")
+        print ('-'*10)
         print("lg : to LOGIN") 
         print("cu : to CREATE NEW USER")
         print("fu : to FIND A USER")
-        print("DU : to DISPLAY A USER")
+        print("du : to DISPLAY ALL USERS")
         print("ex : to EXIT")
         short_code0= input()
         if short_code0 == 'lg':
@@ -86,7 +88,7 @@ def main():
                 login_password = input()
 
                 if check_if_user_exists(login_user_name):
-                    print(f"WELCOME {login_user_name}")
+                    print(f"WELCOME {login_user_name}") 
                     logged_in_user = find_users(login_user_name)
 
                     if logged_in_user.password == login_password:
@@ -95,7 +97,13 @@ def main():
                         print ('-'*10)
 
                         while True:
-                            print("Enter cc- to add a credential ,dc- display credentials, dl -delete credential ex -exit")
+                            print ('-'*10)
+                            print("PLEASE USE THE FOLLOWING SHORTCODES")
+                            print ('-'*10)
+                            print("cc :to ADD A CREDENTIAL")
+                            print("dc :to DISPLAY CREDENTIALS") 
+                            print("dl :to DELETE A CREDENTIAL")
+                            print("ex :to EXIT")
                             shortcode3 = input()
 
                             credential_user_name = logged_in_user.name
@@ -103,39 +111,49 @@ def main():
                             if shortcode3 == 'cc':
 
                                 while True:
-                                    print("use these short codes 1- enter you own password 2 -for system generated password ,'ok' -credentials menu")
+                                    print ('-'*10)
+                                    print("USE THE FOLLOWING SHORTCODES")
+                                    print ('-'*10)
+                                    print("1 :to ENTER YOUR OWN PASSWORD")
+                                    print("2 : to GET SYSTEM GENERATED PASSWORD")
+                                    print("ok : to GO BACK TO THE CREDENTIALS MENU")
                                     short_code5 = input()
 
                                     if short_code5 == '1':
-                                        print(f"welcome {credential_user_name} add a credential") 
-                                        print("Enter credential name")
+                                        print(f"WELCOME {credential_user_name}, ADD A CREDENTIAL") 
+                                        print ('-'*10)
+                                        print("ENTER CREDENTIAL NAME")
                                         name_of_credential =input()
-                                        print("Enter password for the credential")
+                                        print("ENTER CREDENTIAL'S PASSWORD")
                                         password_of_credential = input()
 
                                         save_credential_run(create_credential(credential_user_name,name_of_credential,password_of_credential))
                                         
-                                        print("You Credentials")
+                                        print("YOUR CREDENTIALS")
                                         print ('-'*10)
                                         for credential in Credentials.display_all_credentials():
                                             if credential_user_name == credential.user_name:
-                                                print(f"Credential:{credential.credential_name}......Password:{credential.credential_password}")
+                                                print(f"CREDENTIAL:{credential.credential_name}......PASSWORD:{credential.credential_password}")
+                                                print ("\n")
                                     
 
                                     elif short_code5 == '2':
-                                        print(f"welcome {credential_user_name} add a credential") 
-                                        print("Enter credential name")
+                                        print ('-'*10)
+                                        print(f"WELCOME {credential_user_name}, ADD A CREDENTIAL")
+                                        print ('-'*10) 
+                                        print("ENTER CREDENTIAL NAME")
                                         name_of_credential =input()
-                                        print("You Password has been generated")
+                                        print("YOUR PASSWORD HAS BEEN GENERATED")
                                         password_of_credential = random.randint(10000,99000)
 
                                         save_credential_run(create_credential(credential_user_name,name_of_credential,password_of_credential))
                                         
-                                        print("You Credentials")
+                                        print("YOUR CREDENTIALS")
                                         print ('-'*10)
                                         for credential in Credentials.display_all_credentials():
                                             if credential_user_name == credential.user_name:
-                                                print(f"Credential:{credential.credential_name}......Password:{credential.credential_password}")
+                                                print(f"CREDENTIAL:{credential.credential_name}......PASSWORD:{credential.credential_password}")
+                                                print ("\n")
 
                                     elif short_code5 == 'ok':
                                         break
@@ -143,75 +161,83 @@ def main():
                                     elif short_code5 == 'ex':
                                         break
                                     else:
-                                         print("Invalid Input, please use the provided shortcodes")
+                                         print("INVALID INPUT PLEASE USE THE PROVIDED SHORTCODES")
+                                         print ("\n")
 
 
                             elif shortcode3 == 'dc':
-                                print("You Credentials")
+                                print("YOUR CREDENTIALS")
                                 print ('-'*10)
                                 for credential in Credentials.display_all_credentials():
                                     if credential_user_name == credential.user_name:
                                         print(f"{credential.credential_name}......{credential.credential_password}")
+                                        print ("\n")
 
                             elif shortcode3 == 'dl':
                                 if Credentials.credential_exists(credential_user_name):
-                                    print("Enter Name of Credential to delete")
+                                    print("ENTER NAME OF CREDETIAL TO DELETE")
                                     credential_for_delete = input()
 
                                     for credential in Credentials.display_all_credentials():
                                         if credential.credential_name == credential_for_delete:
                                             credential.delete_credentials()
-                                            print(f"Deleted {credential_for_delete}")
+                                            print(f"DELETED {credential_for_delete}")
                                             print("\n")
 
                                         else:
                                             print ('-'*10)
-                                            print("The credential does not exist")
+                                            print("THE ENTERED CREDENTIAL DOES NOT EXIST")
+                                            print ("\n")
         
                                 else:
-                                    print("You have not added any credentials yet")        
+                                    print("YOU HAVE NOT ADDED ANY CREDENTIALS YET")   
+                                    print ("\n")     
 
                             elif shortcode3 == 'ex':
-                                print("exiting credentials")
+                                print("EXITING CREDENTIALS")
+                                print ("\n")
                                 break
 
                             else:
-                                print("Invalid Choice please use the short codes")
+                                print("INVALID CHOICE PLEASE USE THE PROVIDED SHORTCODES")
+                                print ("\n")
                             
                 else:
                    print ('-'*10)
-                   print("Wrong user name and password combination")
+                   print("WRONG USER/PASSWORD COMBINATION")
                    print ('-'*10)
 
 
         elif short_code0 == 'cu':
-            print ("Creating a New User")
+            print ("CREATING A NEW USER")
             print('-'*10)
 
-            print ("Enter Your Name")
+            print ("ENTER YOUR NAME")
             user_name_run2 = input()
-            print ("Enter a password")
+            print ("ENTER A PASSWORD")
             user_password_run2 =input()
 
             save_users(create_users(user_name_run2, user_password_run2))
             print("\n")
-            print (f"New user created") 
+            print (f"NEW USER CREATED") 
             print('-'*10)
-            print("user ...............password")
-            print(f" name:{user_name_run2}.... Password:{user_password_run2} ")
+            print("USER ...............PASSWORD")
+            print(f" NAME:{user_name_run2}.... PASSWORD:{user_password_run2} ")
+            print ("\n")
 
             #This part invokes the credentials class
             print ('-'*10)
-            print("You can now login to add a new credential")
+            print("YOU CAN NOW LOGIN TO ENTER A CREDENTIAL")
             print ('-'*10)
 
         elif short_code0 == 'ex':
-            print ("Exiting Application")
+            print ("EXITING APPLICATION")
+            print ("\n")
             break
 
         elif short_code0 == 'du':
             if displaying_all_users():
-                print("Here is a list of all users")
+                print("HERE IS A LIST OF ALL THE USERS")
                 print("\n")
 
                 for user in displaying_all_users():
@@ -219,40 +245,44 @@ def main():
                     print ("\n")
             else:
                 print("\n")
-                print("You have not created any users yet")
+                print("YOU HAVE NOT CREATED ANY USERS YET")
                 print("\n")
 
         elif short_code0 == 'fu':
-            print("enter the name of the user you want to search for")
+            print("ENTER NAME OF THE USER YOU WANT TO SEARCH FOR")
             search_name =input()
 
             if check_if_user_exists(search_name):
                 search_user = find_users(search_name)
                 print ('-'*10)
                 print(f"{search_user.name}....{search_user.password}")
+                print ("\n")
                 
 
             else:
                 print('-'*10)
-                print ("User under the given name does not exist")
+                print ("USER UNDER THE GIVEN NAME DOES NOT EXIST")
+                print ("\n")
+                
 
         elif short_code0 == 'dl':
-            print("enter the name of the used you want to Delete")
+            print("ENTER NAME OF USER YOU WANT TO DELETE")
             delete_name =input()
 
             if check_if_user_exists(delete_name):
                 delete_users(find_users(delete_name))
                 print ('-'*10)
-                print(f"user {delete_name} deleted")
+                print(f"USER {delete_name} DELETED")
+                print ("\n")
                 
             else:
                 print('-'*10)
-                print ("User under the given name does not exist")
+                print ("USER UNDER THE GIVEN NAME DOES NOT EXIST")
                 print("\n")
 
 
         else:
-            print("Invalid input, please use the provided shortcodes")
+            print("INVALID CHOICE PLEASE USE THE PROVIDED SHORTCODES")
 
 if __name__ == '__main__':
 
